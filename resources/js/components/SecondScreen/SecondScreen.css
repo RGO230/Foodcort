@@ -1,0 +1,15 @@
+.second-screen {
+  background-image: url(../../assets/img/background_screen2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding: 15px;
+}
+.second-screen__content{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  border-radius: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

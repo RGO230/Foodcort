@@ -1,0 +1,43 @@
+.result-placeholder {
+  width: 480px;
+  display: flex;
+  column-gap: 20px;
+  padding: 20px 0;
+  height: 150px;
+}
+
+.result-placeholder:not(:last-child) {
+  border-bottom: 2px solid #ccc;
+}
+
+.result-placeholder__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-placeholder__image {
+  height: 100%;
+  width: 200px;
+}
+
+.result-placeholder__title {
+  width: 100%;
+  height: 22px;
+}
+
+.result-placeholder__price {
+  width: 80%;
+  height: 18px;
+}
+
+.result-placeholder__geo {
+  width: 100%;
+  height: 18px;
+}
+
+.result-placeholder__submit {
+  width: 80px;
+  height: 18px;
+}

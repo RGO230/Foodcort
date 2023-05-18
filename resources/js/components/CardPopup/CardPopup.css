@@ -1,0 +1,45 @@
+.card-popup {
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s, visibility 0s 0.15s;
+}
+
+.card-popup.active {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+  transition: 0.2s;
+}
+
+.card-popup__content {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  column-gap: 25px;
+  width: 1250px;
+}
+
+.card-popup__image {
+  height: 350px;
+}
+
+.card-popup__image img{
+  object-fit: cover;
+}
+
+.card-popup__title{
+  font-size: 30px;
+}

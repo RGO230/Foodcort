@@ -1,0 +1,27 @@
+.placeholder {
+  position: relative;
+  background-color: rgb(211, 211, 211);
+  z-index: 10;
+  overflow: hidden;
+  height: 100%;
+}
+
+.placeholder__activity {
+  position: absolute;
+  left: -45%;
+  height: 100%;
+  width: 45%;
+  background-image: linear-gradient(to left, rgba(251, 251, 251, .05), rgba(251, 251, 251, .3), rgba(251, 251, 251, .6), rgba(251, 251, 251, .3), rgba(251, 251, 251, .05));
+  animation: loading 1s infinite;
+  z-index: 11;
+}
+
+@keyframes loading {
+  0% {
+    left: -45%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

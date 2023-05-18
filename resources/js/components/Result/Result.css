@@ -1,0 +1,25 @@
+.result {
+  position: relative;
+  z-index: 1;
+  background-color: #151515;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  color: #dbbb37;
+  box-shadow: 2px 0 2px 0 rgb(0 0 0 / 10%);
+  overflow: auto;
+}
+
+.result:hover {
+  scrollbar-color: #dbbb37 #d6ae3e;
+}
+
+.result:hover::-webkit-scrollbar-thumb {
+  background-color: #dbbb37;
+}
+
+.result__title {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 18px;
+}
