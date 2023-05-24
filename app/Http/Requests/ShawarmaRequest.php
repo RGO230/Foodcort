@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PriceFromRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ShawarmaRequest extends FormRequest
@@ -22,11 +23,12 @@ class ShawarmaRequest extends FormRequest
     public function rules(): array
     {
         return [
+            
             'title' => 'string|required' ,
             'descr' => 'string|required',
             'assortment' => 'int|required',
-            'price_from' => 'int|required',
-            'price_to' => 'int|required',
+            'price_from' => ['int','required','max:399','min:100'],
+            'price_to' => 'int|required|max:400|min:101|gt:price_from',
             'overall_rating'=>'int',
             'file' => 'file',
             'address'=>'string|required',
@@ -36,6 +38,7 @@ class ShawarmaRequest extends FormRequest
             'district_id' => 'exists:districts,id',
             'longitude' => 'numeric|required',
             'latitude' => 'numeric|required',
+            
         ];
     }
 }

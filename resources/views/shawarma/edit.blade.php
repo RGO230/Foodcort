@@ -24,16 +24,16 @@
                         <label class="col-md-4 col-form-label text-md-end">{{ __('Описание') }}</label>
 
                         <div class="col-md-6">
-                            <textarea class="form-control" value="{{$shawarma->descr}}" name="descr"></textarea>
+                            <textarea type="text" id="descr" name='descr' class="form-control"> {{$shawarma->descr}}</textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label  class="col-md-4 col-form-label text-md-end">{{ __('Ассортимент') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('Ассортимент') }}</label>
 
                         <div class="col-md-6">
-                        <select class="form-control" value="{{$shawarma->assortment}}" id="ast" name="assortment">
+                            <select class="form-control" value="{{$shawarma->assortment}}" id="ast" name="assortment">
                                 @foreach($assortment as $item)
-                                <option value="{{$item}}">{{$item}}</option>
+                                <option value="{{$item}}" {{ ($shawarma->assortment == $item) ? 'selected' : '' }}> {{$item}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -42,7 +42,7 @@
                         <label class="col-md-4 col-form-label text-md-end">{{ __('Адрес') }}</label>
 
                         <div class="col-md-6">
-                            <input type="text" class ="form-control" value="{{$shawarma->address}}" name="address"></textarea>
+                            <input type="text" class="form-control" value="{{$shawarma->address}}" name="address"></textarea>
                         </div>
                     </div>
 
@@ -50,14 +50,14 @@
                         <label class="col-md-4 col-form-label text-md-end">{{ __('Доставка') }}</label>
 
                         <div class="col-md-6">
-                            <input type="checkbox" value="{{$shawarma->delivery}}"   name="delivery" >
+                            <input type="checkbox" {{($shawarma->delivery == 1) ? 'checked' : ''}} name="delivery">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-md-4 col-form-label text-md-end">{{ __('Место для трапезы') }}</label>
 
                         <div class="col-md-6">
-                            <input type="checkbox"  value="{{$shawarma->foodcort}}"  name="foodcort" >
+                            <input type="checkbox" {{($shawarma->foodcort == 1) ? 'checked' : ''}} name="foodcort">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -77,23 +77,25 @@
                     </div>
 
                     <div class="row mb-3">
-                        <label  class="col-md-4 col-form-label text-md-end">{{ __('Качество сервиса') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('Качество сервиса') }}</label>
 
                         <div class="col-md-6">
-                        <select class="form-control" value="{{$shawarma->service_quality}}" id="sq" name="service_quality">
+                            <select class="form-control" id="sq" name="service_quality">
                                 @foreach($service_quality as $item)
-                                <option value="{{$item}}">{{$item}}</option>
+                                <option value="{{$item}}" {{ ($shawarma->service_quality == $item) ? 'selected' : '' }}> {{$item}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label  class="col-md-4 col-form-label text-md-end">{{ __('Район') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('Район') }}</label>
 
                         <div class="col-md-6">
-                        <select class="form-control" value="{{$shawarma->district_id}}" id="dist" name="district_id">
+                            <select class="form-control" id="dist" name="district_id">
                                 @foreach($district as $item)
-                                <option value="{{$item->id}}">{{$item->title}}</option>
+                                <option value="{{ $item->id }}" {{ ($shawarma->district_id == $item->id) ? 'selected' : '' }}>
+                                    {{ $item->title }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -103,7 +105,7 @@
                         <label class="col-md-4 col-form-label text-md-end">{{ __('Фотография') }}</label>
 
                         <div class="col-md-6">
-                            <input type="file" class="form-control"  id="img" name="file">
+                            <input type="file" class="form-control" id="img" name="file">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -138,15 +140,15 @@
 </div>
 </div>
 <div>
-@if ($errors->any())
+    @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
 </div>
 <script>
     tinymce.init({

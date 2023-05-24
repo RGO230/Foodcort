@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::middleware(['auth'])->group(function(){
+Route::post('shawarma/{shawarma}/update',[ShawarmaController::class,'update']);
 Route::resource('shawarma',ShawarmaController::class);
 Route::get('shawarma/{shawarma}/destroy',[ShawarmaController::class,'destroy']);
 

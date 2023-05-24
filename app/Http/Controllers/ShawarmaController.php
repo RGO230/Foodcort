@@ -13,8 +13,8 @@ class ShawarmaController extends Controller
 {
     public function index()
     {
-
-        $shawarma = Shawarma::orderBy('id', 'desc')->get();
+        
+        $shawarma = Shawarma::with('districts')->orderBy('id', 'desc')->get();
         return view('shawarma.index')->with('shawarma', $shawarma);
     }
     public function create()
@@ -55,7 +55,7 @@ class ShawarmaController extends Controller
         $shawarma->longitude = $request->longitude;
         $shawarma->latitude = $request->latitude;
         $shawarma->price_to = $request->price_to;
-        $shawarma->overall_rating = ($request->price_from + $request->assortment + $request->service_quality) / 3;
+        $shawarma->overall_rating = $shawarma->RatingCount($request->price_from,$request->assortment,$request->service_quality);
         $shawarma->save();
         return redirect()->route('shawarma.index');
     }
@@ -90,6 +90,7 @@ class ShawarmaController extends Controller
             "descr" => $request->descr,
             "assortment" => $request->assortment,
             "price_to" => $request->price_to,
+            "price_from" => $request->price_from,
             "address"=>$request->address,
             "img" => $path,
             "delivery" => $request->delivery == 'on' ? true : false,
@@ -98,12 +99,11 @@ class ShawarmaController extends Controller
             "district_id" => $request->district_id,
             "longitude" => $request->longitude,
             "latitude" => $request->latitude,
-            "price_from" => $request->price_from,
-            "overall_rating" => ($request->price_from + $request->assortment + $request->service_quality) / 3,
+            "overall_rating" =>$shawarma->RatingCount($request->price_from,$request->assortment,$request->service_quality),
 
         ]);
 
-        return redirect()->route('shawarma.update');
+        return redirect()->route('shawarma.index');
     }
     public function destroy(Shawarma $shawarma)
     {

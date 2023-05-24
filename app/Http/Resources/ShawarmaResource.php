@@ -31,7 +31,7 @@ class ShawarmaResource extends JsonResource
             "service_quality" => $this->service_quality,
             "district_id" => $this->district_id,
             "coordinates"=>array('x'=>$this->longitude,'y'=>$this->latitude),
-            "overall_rating" => ($this->price_from + $this->assortment + $this->service_quality) / 3,
+            "overall_rating" => $this->RatingCount($this->price_fromm,$this->assortment,$this->service_quality),
         ];
     }
 }

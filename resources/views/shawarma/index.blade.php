@@ -38,7 +38,7 @@
                         <td>{{$item->price_to}}</td>
                         <td>{{$item->service_quality}}</td>
                         <td>{{$item->assortment}}</td>
-                        <td>{{$item->district_id}}
+                        <td>{{$item->districts->title}}</td>
                         <td>{{$item->longitude}}</td>
                         <td>{{$item->latitude}}</td>
                         <th>{{$item->overall_rating}}</th>

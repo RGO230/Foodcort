@@ -18,4 +18,8 @@ class District extends Model
         ['title' => 'Левобережный', 'longitude' => 39.28832869420845, 'latitude' => 51.625646565383725],
         
     ];
+    public function shawarmas(){
+        return $this->hasMany(Shawarma::class);
+    
+    }
 }

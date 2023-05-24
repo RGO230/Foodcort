@@ -28,12 +28,12 @@ class ShawarmaFilter extends AbstractFilter
 
     public function price_from(Builder $builder, $value)
     {
-        $builder->where('price_from',$value);
+        $builder->where('price_from','>=',$value);
     }
 
     public function price_to(Builder $builder, $value)
     {
-        $builder->where('price_to',  $value);
+        $builder->where('price_to', '<=', $value);
     }
 
     public function district_id(Builder $builder, $value)

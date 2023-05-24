@@ -28,5 +28,6 @@ class ApiShawarmaController extends Controller
             $shawarma = $shawarma->orderBy('overall_rating', 'desc')->get();
             return response()->json(ShawarmaResource::collection($shawarma));
         }
+       
     }
 }
